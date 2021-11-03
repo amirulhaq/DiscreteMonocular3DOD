@@ -1,6 +1,5 @@
-checkpoint/
 .gitignore
 
-cfg/__pycache__
-models/__pycache__
-utils/__pycache__
+cfg/__pycache__/
+models/__pycache__/
+utils/__pycache__/
