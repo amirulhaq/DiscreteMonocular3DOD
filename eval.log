@@ -1,32 +1,32 @@
-10:52:46.575 EvalObjectDetection3d INFO ========================
-10:52:46.575 EvalObjectDetection3d INFO === Start evaluation ===
-10:52:46.576 EvalObjectDetection3d INFO ========================
-10:52:46.577 EvalObjectDetection3d INFO Use the following options
-10:52:46.578 EvalObjectDetection3d INFO  -> GT folder    : C:/Users/lps3090/Documents/Datasets/Cityscape\gtBbox3d\val
-10:52:46.579 EvalObjectDetection3d INFO  -> Pred folder  : saves/predBbox3d/
-10:52:46.580 EvalObjectDetection3d INFO  -> Labels       : car
-10:52:46.580 EvalObjectDetection3d INFO  -> Min IoU:     : 0.70
-10:52:46.581 EvalObjectDetection3d INFO  -> Max depth [m]: 100
-10:52:46.581 EvalObjectDetection3d INFO  -> Step size [m]: 5
-10:52:46.582 EvalObjectDetection3d INFO  -> cw           : -- automatically determined --
-10:52:46.583 EvalObjectDetection3d INFO Loading GT...
-10:52:46.587 EvalObjectDetection3d INFO Found 500 GT files.
-10:52:46.708 EvalObjectDetection3d INFO Loading predictions...
-10:52:46.711 EvalObjectDetection3d INFO Found 500 prediction files.
-10:52:49.205 EvalObjectDetection3d INFO Evaluating images...
-10:52:56.840 EvalObjectDetection3d INFO Calculate AP...
-10:52:59.408 EvalObjectDetection3d INFO Calculate TP stats...
-10:52:59.452 EvalObjectDetection3d INFO ========================
-10:52:59.453 EvalObjectDetection3d INFO ======= Results ========
-10:52:59.453 EvalObjectDetection3d INFO ========================
-10:52:59.454 EvalObjectDetection3d INFO car
-10:52:59.454 EvalObjectDetection3d INFO  -> 2D AP Amodal                :  23.0093
-10:52:59.455 EvalObjectDetection3d INFO  -> BEV Center Distance (DDTP)  :  95.1143
-10:52:59.456 EvalObjectDetection3d INFO  -> Yaw Similarity (DDTP)       :  86.4224
-10:52:59.456 EvalObjectDetection3d INFO  -> Pitch/Roll Similarity (DDTP):  99.9700
-10:52:59.457 EvalObjectDetection3d INFO  -> Size Similarity (DDTP)      :  82.1163
-10:52:59.457 EvalObjectDetection3d INFO  -> Detection Score             :  20.9168
-10:52:59.458 EvalObjectDetection3d INFO Mean Detection Score:  20.9168
-11:03:17.945 EvalObjectDetection3d INFO ========================
-11:03:17.946 EvalObjectDetection3d INFO === Stop evaluation ====
-11:03:17.947 EvalObjectDetection3d INFO ========================
+10:47:40.072 EvalObjectDetection3d INFO ========================
+10:47:40.074 EvalObjectDetection3d INFO === Start evaluation ===
+10:47:40.075 EvalObjectDetection3d INFO ========================
+10:47:40.092 EvalObjectDetection3d INFO Use the following options
+10:47:40.095 EvalObjectDetection3d INFO  -> GT folder    : D:/Cityscape\gtBbox3d\val
+10:47:40.103 EvalObjectDetection3d INFO  -> Pred folder  : saves/final/
+10:47:40.104 EvalObjectDetection3d INFO  -> Labels       : car
+10:47:40.106 EvalObjectDetection3d INFO  -> Min IoU:     : 0.70
+10:47:40.107 EvalObjectDetection3d INFO  -> Max depth [m]: 100
+10:47:40.108 EvalObjectDetection3d INFO  -> Step size [m]: 5
+10:47:40.110 EvalObjectDetection3d INFO  -> cw           : -- automatically determined --
+10:47:40.111 EvalObjectDetection3d INFO Loading GT...
+10:47:40.116 EvalObjectDetection3d INFO Found 500 GT files.
+10:47:40.229 EvalObjectDetection3d INFO Loading predictions...
+10:47:40.234 EvalObjectDetection3d INFO Found 500 prediction files.
+10:47:42.422 EvalObjectDetection3d INFO Evaluating images...
+10:47:47.196 EvalObjectDetection3d INFO Calculate AP...
+10:47:48.152 EvalObjectDetection3d INFO Calculate TP stats...
+10:47:48.202 EvalObjectDetection3d INFO ========================
+10:47:48.203 EvalObjectDetection3d INFO ======= Results ========
+10:47:48.204 EvalObjectDetection3d INFO ========================
+10:47:48.205 EvalObjectDetection3d INFO car
+10:47:48.206 EvalObjectDetection3d INFO  -> 2D AP Amodal                :  29.6771
+10:47:48.207 EvalObjectDetection3d INFO  -> BEV Center Distance (DDTP)  :  95.1623
+10:47:48.208 EvalObjectDetection3d INFO  -> Yaw Similarity (DDTP)       :  86.6407
+10:47:48.209 EvalObjectDetection3d INFO  -> Pitch/Roll Similarity (DDTP):  99.9697
+10:47:48.210 EvalObjectDetection3d INFO  -> Size Similarity (DDTP)      :  80.4674
+10:47:48.213 EvalObjectDetection3d INFO  -> Detection Score             :  26.8756
+10:47:48.214 EvalObjectDetection3d INFO Mean Detection Score:  26.8756
+10:47:54.047 EvalObjectDetection3d INFO ========================
+10:47:54.049 EvalObjectDetection3d INFO === Stop evaluation ====
+10:47:54.050 EvalObjectDetection3d INFO ========================

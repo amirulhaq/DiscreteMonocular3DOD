@@ -185,7 +185,7 @@ class Tree(nn.Module):
 
 
 class DLA(Backbone):
-    def __init__(self, cfg, levels, channels, block=BasicBlock, residual_root=False, pretrained=False):
+    def __init__(self, cfg, levels, channels, block=BasicBlock, residual_root=False):
         super(DLA, self).__init__()
         self.cfg = cfg
         self.channels = channels
@@ -218,17 +218,16 @@ class DLA(Backbone):
                 n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
                 m.weight.data.normal_(0, math.sqrt(2. / n))
 
-        if pretrained:
-            self.load_pretrained_model(
-                data='imagenet', name='dla34', hash='ba72cf86')
+    #     self.load_pretrained_model(
+    #         data='imagenet', name='dla34', hash='ba72cf86')
 
-    def load_pretrained_model(self, data, name, hash):
-        model_url = get_model_url(data, name, hash)
-        model_weights = model_zoo.load_url(model_url)
-        del model_weights['fc.weight']
-        del model_weights['fc.bias']
-        print('Loading pretrained DLA!')
-        self.load_state_dict(model_weights, strict=True)
+    # def load_pretrained_model(self, data, name, hash):
+    #     model_url = get_model_url(data, name, hash)
+    #     model_weights = model_zoo.load_url(model_url)
+    #     del model_weights['fc.weight']
+    #     del model_weights['fc.bias']
+    #     print('Loading pretrained DLA!')
+    #     self.load_state_dict(model_weights, strict=True)
 
     def _make_conv_level(self, inplanes, planes, convs, stride=1, dilation=1):
         modules = []
@@ -394,11 +393,10 @@ class DLAUP(Backbone):
         return ret
 
 
-def dla34(cfg, pretrained=False):  # DLA-34
+def dla34(cfg, pretrained=None):  # DLA-34
     model = DLA(cfg, [1, 1, 1, 2, 2, 1],
                 [16, 32, 64, 128, 256, 512],
-                block=BasicBlock,
-                pretrained=pretrained)
+                block=BasicBlock)
     return model
 
 

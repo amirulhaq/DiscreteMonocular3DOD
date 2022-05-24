@@ -10,9 +10,10 @@
 
 ## Configure the settings
 Make changes to the settings [here](cfg/settings.py):
-1. Change the dataset root (line 20)
-2. Change weights name/location (line 75)
-3. Change the location of the save folder for saving prediction results (line 76)
+1. Change the dataset root
+2. Change weights name/location
+3. Change the location of the save folder for saving prediction results
+4. Download our pretrained weights [here](https://drive.google.com/file/d/1daQsTJXrEGrW7ckDk6UmYc-2lTZgQ0Gr/view?usp=sharing)
 
 ## Running Evaluation
 To run the cityscapes benchmark simply 
@@ -25,4 +26,4 @@ The results will be saved in saves/results/results.json
 ```
 python gen_vis.py
 ```
-The results will be saved in folder saves/vis/# CS-3DOD
+The results will be saved in folder saves/vis/

@@ -15,6 +15,7 @@ from pyquaternion import Quaternion
 
 from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Iterable
 from .cs_target_transform import cs_target_transform, line_intersect
+from .post_processing.decode import rot_y2alpha
 
 from .box3dImageTransform import ( Camera, 
                                 Box3dImageTransform,
@@ -63,6 +64,7 @@ class cs_data(datasets.vision.VisionDataset):
         self.target_class = ['car']
         self.depth_gaussian = cfg.MODEL.HEAD.DEPTH_GAUSSIAN
         self.depth_bin = cfg.MODEL.HEAD.DEPTH_BIN
+        self.gauss_shape = cfg.MODEL.HEAD.DEPTH_GAUSSIAN_SHAPE
         
         self.resize = cfg.MODEL.BACKBONE.DOWN_RATIO if cfg is not None else 0
         assert isinstance(self.resize, int)
@@ -71,7 +73,7 @@ class cs_data(datasets.vision.VisionDataset):
         if mode == "fine":
             valid_modes = ("train", "test", "val")
         else:
-            valid_modes = ("train", "train_extra", "val")
+            valid_modes = ("train", "train_extra", "val", "demoVideo")
         msg = ("Unknown value '{}' for argument split if mode is '{}'. "
                "Valid values are {{{}}}.")
         msg = msg.format(split, mode, iterable_to_str(valid_modes))
@@ -86,6 +88,9 @@ class cs_data(datasets.vision.VisionDataset):
                 target_name = os.path.join(target_dir, target_name)
                 self.images.append(os.path.join(img_dir, file_name))
                 self.targets.append(target_name)
+
+                if self.split == "demoVideo":
+                    continue
                 
                 # Add 3D information labels
                 json_label = '{}_{}'.format(file_name.split('_leftImg8bit')[0],
@@ -272,9 +277,9 @@ class cs_data(datasets.vision.VisionDataset):
         indices = -0.5 + 0.5 * math.sqrt(1 + 8 * (di - depth_min) / bin_size)
         return int(indices)
 
-    def gaussian_depth_class(self, center_z, num_bins=120, gauss_shape=5):
-        gauss_range = gauss_shape // 2
-        gaussian = self.gaussian1D(gauss_shape)
+    def gaussian_depth_class(self, center_z, num_bins=120, gauss_shape=3):
+        gauss_range = gauss_shape
+        gaussian = self.gaussian1D((gauss_shape*2)+1)
 
         discrete_class = self.discrete_depth_class(center_z,  num_bins=num_bins)
         l = max(0, discrete_class-gauss_range-1)
@@ -349,7 +354,7 @@ class cs_data(datasets.vision.VisionDataset):
         h[h < np.finfo(h.dtype).eps * h.max()] = 0
         return h
 
-    def gaussian1D(self, shape=7, sigma=1):
+    def gaussian1D(self, shape=3, sigma=1): # default shape = 5
         m = (shape - 1.) / 2. 
         y = np.ogrid[-m:m+1]
 
@@ -407,7 +412,7 @@ class cs_data(datasets.vision.VisionDataset):
             # alpha = rot_y2alpha(yaw, x, self.proj_matrix[0, 2], self.proj_matrix[0, 0])
             orientation[y, x] = self.discrete_orientation_class(yaw)
             if self.depth_gaussian:
-                depth[y, x] = self.gaussian_depth_class(depth_C[0], self.depth_bin)
+                depth[y, x] = self.gaussian_depth_class(depth_C[0], self.depth_bin, self.gauss_shape)
             else:
                 depth[0, y, x] = self.discrete_depth_class(depth_C[0], self.depth_bin)
             

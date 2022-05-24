@@ -149,8 +149,7 @@ class DLASeg(nn.Module):
         channels = [16, 32, 64, 128, 256, 512]
         # levels = [1, 1, 1, 2, 2, 1]
 
-        pretrained = True if not cfg.TRAINING.CONTINUE else False
-        self.base = dla34(None, pretrained=pretrained) 
+        self.base = dla34(None) 
         channels = self.base.channels # [16, 32, 64, 128, 256, 512] 
         scales = [2 ** i for i in range(len(channels[self.first_level:]))]
         self.dla_up = DLAUpSeg(channels=channels[self.first_level:], scales=scales)

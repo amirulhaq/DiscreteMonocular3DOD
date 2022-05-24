@@ -1155,7 +1155,7 @@ def main_eval(cfg):
     logger.info("========================")
 
     # get cityscapes paths
-    cityscapesPath = cfg.DATASETS.ROOT 
+    cityscapesPath = cfg.DATASETS.ROOT
     # cityscapesPath = os.environ.get(
     #     'CITYSCAPES_DATASET', os.path.join(
     #         os.path.dirname(os.path.realpath(__file__)), '..', '..')
@@ -1168,7 +1168,7 @@ def main_eval(cfg):
     #     os.path.join(cityscapesPath, "results")
     # )
     
-    # predictionPath = cfg.
+    # predictionPath = cfg.EVAL.SAVE_FOLDER
     # prediction_subfolder = path if path is not None else "predBbox3d"
     # predictionFolder = os.path.join(predictionPath, prediction_subfolder)
     predictionFolder = cfg.EVAL.SAVE_FOLDER
