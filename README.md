@@ -1,5 +1,7 @@
 # Discrete3DOD
 
+Official repository for IEEE Transaction on Intelligent Transportation System, entitled "One Stage Monocular 3D Object Detection Utilizing Discrete Depth and Orientation Representation."
+
 ## Requirements
 1. Python 3.7
 2. Pytorch 1.9
