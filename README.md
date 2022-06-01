@@ -1,6 +1,6 @@
 # Discrete3DOD
 
-Official repository for IEEE Transaction on Intelligent Transportation System, entitled "One Stage Monocular 3D Object Detection Utilizing Discrete Depth and Orientation Representation."
+Official repository for IEEE Transaction on Intelligent Transportation System, entitled ["One Stage Monocular 3D Object Detection Utilizing Discrete Depth and Orientation Representation."](https://ieeexplore.ieee.org/abstract/document/9780191)
 
 ## Requirements
 1. Python 3.7
